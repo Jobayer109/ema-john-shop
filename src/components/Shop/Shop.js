@@ -18,6 +18,19 @@ const Shop = () => {
             .then(data => setProducts(data))
     }, [])
     
+    useEffect(() => {
+        const storedCart = getStoredData()
+        const savedProducts = [];
+             for (const id in storedCart) {
+            const addedProducts = products.find(product => product.id === id)
+            if (addedProducts) {
+                     const quantity = storedCart[id]
+                     addedProducts.quantity = quantity
+                    savedProducts.push(addedProducts)
+            }
+        }
+        setCart(savedProducts);      
+    }, [products])
    
     return (
         <div className='divided'>
