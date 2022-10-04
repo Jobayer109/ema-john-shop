@@ -1,7 +1,6 @@
 import React from "react";
 
 const Cart = ({ cart }) => {
-  console.log(cart);
   let total = 0;
   let shipping = 0;
   for (const product of cart) {
@@ -12,8 +11,11 @@ const Cart = ({ cart }) => {
 
   return (
     <div>
-      <h3 className="font-bold text-blue-700">Order Summery</h3>
-      <h4>Selected items: {cart.length}</h4>
+      <h3 className="font-bold text-blue-700 my-2 underline text-xl">Order Summery</h3>
+      <h4 className="font-bold">
+        Selected items:{" "}
+        <span className="bg-black text-yellow-400 rounded-full p-1">{cart.length}</span>
+      </h4>
       <div className="bg-white mx-4 rounded-lg mt-2 font-medium pl-8 text-start">
         <p>Total Price: ${total} </p>
         <p>Shipping: ${shipping} </p>

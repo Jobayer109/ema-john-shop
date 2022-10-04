@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { addToDb, getStoredData } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import "./Shop.css";
 
 const Shop = () => {
+    const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const addToCart = (product) => {
-        console.log(product)
         setCart([...cart, product])
-        
+        addToDb(product.id)
     }
-    const [products, setProducts] = useState([]);
+    
     useEffect(() => {
-        fetch("data.json").then(res => res.json()).then(data => setProducts(data))
-    },[])
+        fetch("data.json")
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [])
+    
+   
     return (
         <div className='divided'>
             <div className='grid grid-cols-3 gap-10'>

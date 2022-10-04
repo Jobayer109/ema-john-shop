@@ -5,7 +5,7 @@ const Product = ({ product, addToCart }) => {
   const { id, name, img, price, ratings, seller, shipping, stock, quantity } = product;
   return (
     <div>
-      <div className="card card-compact w-[90%] mx-auto mt-6 bg-base-100 shadow-xl">
+      <div className="card card-compact w-[80%] mx-auto mt-6 bg-base-100 shadow-xl h-96">
         <figure>
           <img className="h-48 w-full" src={img} alt="Shoes" />
         </figure>
@@ -18,7 +18,7 @@ const Product = ({ product, addToCart }) => {
           </div>
         </div>
         <div className="card-actions">
-                  <button onClick={()=> addToCart(product)} className=" py-1 btn-primary w-full">Buy Now <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon></button>
+                  <button onClick={()=> addToCart(product)} className=" py-1 btn-primary w-full font-semibold ">Buy Now <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon></button>
                   
         </div>
       </div>
