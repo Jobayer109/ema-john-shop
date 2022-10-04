@@ -7,9 +7,22 @@ import "./Shop.css";
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
-    const addToCart = (product) => {
-        setCart([...cart, product])
-        addToDb(product.id)
+
+    const addToCart = (selectedProduct) => {
+        console.log(selectedProduct)
+        let newCart = [];
+        const exists = cart.find(product => product.id === selectedProduct.id)
+        if (!exists) {
+            selectedProduct.quantity = 1;
+            newCart = [...cart, selectedProduct];
+        } else {
+            const rest = cart.filter(product => product.id !== selectedProduct.id)
+            exists.quantity = exists.quantity + 1;
+            newCart= [...rest, exists]
+        }
+
+        setCart(newCart);
+        addToDb(selectedProduct.id)
     }
     
     useEffect(() => {
