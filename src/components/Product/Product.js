@@ -2,12 +2,12 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 const Product = ({ product, addToCart }) => {
-  const { id, name, img, price, ratings, seller, shipping, stock, quantity } = product;
+  const { name, img, price, ratings, seller} = product;
   return (
     <div>
       <div className="card card-compact w-[80%] mx-auto mt-6 bg-base-100 shadow-xl h-96">
         <figure>
-          <img className="h-48 w-full" src={img} alt="Shoes" />
+          <img className="h-48 w-full" src={img ? img : 'No image found'} alt="Shoes" />
         </figure>
         <div className="card-body">
           <h2 className="card-title text-sm font-bold text-blue-700"> {name}</h2>

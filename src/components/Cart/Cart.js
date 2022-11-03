@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Cart = ({ cart }) => {
+
+const Cart = ({ cart, clearCart }) => {
   let quantity = 0;
   let total = 0;
   let shipping = 0;
@@ -13,18 +15,31 @@ const Cart = ({ cart }) => {
 
   return (
     <div>
-      <h3 className="font-bold text-blue-700 my-2 underline text-xl">Order Summery</h3>
+      <h3 className="font-bold text-white my-4 text-xl">Order Summery</h3>
       <h4 className="font-bold">
         Selected items:{" "}
         <span className="bg-black text-yellow-400 rounded-full p-1">{quantity}</span>
       </h4>
-      <div className="bg-white mx-4 rounded-lg mt-2 font-medium pl-8 text-start">
-        <p>Total Price: ${total} </p>
-        <p>Shipping: ${shipping} </p>
-        <p>Tax: ${tax}</p>
+      <div className="bg-black text-white py-6 px-4 mx-4 rounded-lg mt-2 font-medium pl-8 text-start">
+        <p>
+          Total Price: <span className="text-cyan-300 text-lg">$ {total}</span>{" "}
+        </p>
+        <p>
+          Shipping: <span className="text-cyan-300 text-lg">$ {shipping}</span>{" "}
+        </p>
+        <p>
+          Tax: <span className="text-cyan-300 text-lg">${tax}</span>
+        </p>
 
-        <p>Grand Total: {total + shipping + tax}</p>
+        <p>
+          Grand Total: <span className="text-red-500 text-lg">$ {total + shipping + tax}</span>
+        </p>
       </div>
+      <div className="mt-8">
+        {/* <button className="btn btn-sm w-[90%] bg-success hover:bg-green-700"><Link to="/orders">Review Order</Link> </button> */}
+        {/* {children} */}
+      </div>
+        {/* <button onClick={clearCart} className="btn btn-sm w-[90%]  mt-2 btn-warning border border-cyan-50 hover:bg-red-500">Clear Cart</button>  */}
     </div>
   );
 };
